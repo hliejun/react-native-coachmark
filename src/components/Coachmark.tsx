@@ -196,13 +196,13 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
           <View style={[styles.backdrop, { backgroundColor: backdropColor, opacity: backdropOpacity }]} />
           {this.state.position === 'bottom' ? (
             <React.Fragment>
-              {this._renderCoachmark(useView)}
+              {this._renderCoachmark(!!useView)}
               {this._renderChildren()}
             </React.Fragment>
           ) : (
             <React.Fragment>
               {this._renderChildren()}
-              {this._renderCoachmark(useView)}
+              {this._renderCoachmark(!!useView)}
             </React.Fragment>
           )}
           <TouchableWithoutFeedback
