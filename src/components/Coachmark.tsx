@@ -132,7 +132,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
     );
   };
 
-  _renderCoachmark = () => {
+  _renderCoachmark = (isView: boolean) => {
     return (
       <View
         style={{
@@ -141,9 +141,9 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
           left: 0,
           right: 0,
           ...(this.state.position === CoachmarkPosition.TOP
-            ? { top: this.state.childStyle.top + this.state.childStyle.height }
+            ? { top: isView ? 0 : this.state.childStyle.top + this.state.childStyle.height }
             : {
-                bottom: Dimensions.get('window').height - this.state.childStyle.top,
+                bottom: isView ? 0 : Dimensions.get('window').height - this.state.childStyle.top,
               }),
         }}
       >
@@ -196,13 +196,13 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
           <View style={[styles.backdrop, { backgroundColor: backdropColor, opacity: backdropOpacity }]} />
           {this.state.position === 'bottom' ? (
             <React.Fragment>
-              {this._renderCoachmark()}
+              {this._renderCoachmark(useView)}
               {this._renderChildren()}
             </React.Fragment>
           ) : (
             <React.Fragment>
               {this._renderChildren()}
-              {this._renderCoachmark()}
+              {this._renderCoachmark(useView)}
             </React.Fragment>
           )}
           <TouchableWithoutFeedback
