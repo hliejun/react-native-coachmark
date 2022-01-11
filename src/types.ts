@@ -17,6 +17,7 @@ export interface CoachmarkProps {
   backdropColor?: string;
   backdropOpacity?: number;
   coachmarkZindex?: number;
+  useView?: boolean;
 }
 
 export enum CoachmarkPosition {

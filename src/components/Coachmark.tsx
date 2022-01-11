@@ -166,13 +166,20 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
       onPressOutside,
       backdropColor,
       backdropOpacity,
+      useView
     } = this.props;
+
+    const OverlayView = useView ? View : Modal;
+    const overlayProps = useView ? { style: { visibility: this.state.visible ? 'visible' : 'hidden'} } : {
+      animationType: "fade", transparent: true, visible: this.state.visible
+    }
+    
     return (
       <React.Fragment>
         <View ref={this.view} style={contentContainerStyle} onLayout={this._measureLayout}>
           {React.Children.only(this.props.children)}
         </View>
-        <Modal animationType="fade" transparent visible={this.state.visible}>
+        <OverlayView {...overlayProps}>
           <View style={[styles.backdrop, { backgroundColor: backdropColor, opacity: backdropOpacity }]} />
           {this.state.position === 'bottom' ? (
             <React.Fragment>
@@ -192,7 +199,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
           >
             <View style={StyleSheet.absoluteFill} />
           </TouchableWithoutFeedback>
-        </Modal>
+        </OverlayView>
       </React.Fragment>
     );
   }
