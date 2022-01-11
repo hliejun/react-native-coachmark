@@ -170,10 +170,15 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
     } = this.props;
 
     const OverlayView = useView ? View : Modal;
-    const overlayProps = useView ? { style: { visibility: this.state.visible ? 'visible' : 'hidden'} } : {
-      animationType: "fade", transparent: true, visible: this.state.visible
+    const overlayProps = useView ? { 
+      style: { visibility: this.state.visible ? 'visible' : 'hidden'}, 
+      collapsable: false 
+    } : {
+      animationType: 'fade', 
+      transparent: true, 
+      visible: this.state.visible
     }
-    
+
     return (
       <React.Fragment>
         <View ref={this.view} style={contentContainerStyle} onLayout={this._measureLayout}>
