@@ -171,8 +171,14 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
 
     const OverlayView = useView ? View : Modal;
     const overlayProps = useView ? { 
-      style: { 
-        transform: [{ scale: this.state.visible ? 1 : 0 }]
+      style: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        transform: [{ scale: this.state.visible ? 1 : 0 }],
+        zIndex: 10
       }, 
       collapsable: false 
     } : {
