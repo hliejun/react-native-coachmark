@@ -175,11 +175,11 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
         transform: [{ scale: this.state.visible ? 1 : 0 }]
       }, 
       collapsable: false 
-    } : {
+    } as const : {
       animationType: 'fade', 
       transparent: true, 
       visible: this.state.visible
-    }
+    } as const
 
     return (
       <React.Fragment>
