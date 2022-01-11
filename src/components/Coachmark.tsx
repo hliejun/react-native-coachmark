@@ -172,7 +172,7 @@ export default class Coachmark extends Component<CoachmarkProps, CoachmarkState>
     const OverlayView = useView ? View : Modal;
     const overlayProps = useView ? { 
       style: {
-        position: 'absolute',
+        position: 'absolute' as const,
         top: 0,
         right: 0,
         bottom: 0,
